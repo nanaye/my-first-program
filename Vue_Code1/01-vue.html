@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-model="msg"> -->
+
+        <!-- {{变量表达式}} 插值表达式 
+            用在元素内(innerHTML中)
+        -->
+        <p>{{msg+',12344'}},89901</p>
+    </div>
+
+    <!-- <div class="app">
+        <p>{{msg}}</p>
+    </div> -->
+
+    <script src="./vue.js"></script>
+    <script>
+        //new Vue()  创建Vue对象，创建Vue实例
+
+        new Vue({//对象（key:value）
+            el:"#app",  //当前Vue实例所挂载的视图节点
+            //一个Vue实例只能挂载在一个视图节点中，但是一个项目中可以创建多个Vue实例
+
+            data:{  //定义数据
+                msg:'Hello,Vue.js!'
+            }
+        });
+
+        // new Vue({
+        //     el:".app",
+        //     data:{
+        //         msg:'张三!...'
+        //     }
+        // })
+    </script>
+</body>
+</html>

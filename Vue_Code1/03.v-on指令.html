@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <p>{{msg}}</p>
+        <!-- 
+            指令格式：  v-名称:指令的参数.指令的修饰符1.指令的修饰符2="指令的值"
+            v-on指令的指令值：可以是函数对象也可以是函数调用
+                如果设置的是函数对象，则该函数具有默认参数为当前事件的事件对象
+                如果设置的是函数调用，则该函数的参数由使用者决定
+
+            v-on指令使用时会调用内部临时变量$event 表示当前事件的事件对象
+         -->
+        <button v-on:click.prevent.stop="show($event,10)">按钮</button>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+     new Vue({
+            el:"#app",
+            data:{//data中只能定义数据(boolean,string,number,null,object,array)
+                msg:"hello"
+            },
+            methods:{//定义视图上访问的方法的
+            //methods中所有定义的方法都会被当前Vue实例代理
+            //所有methods函数内的this默认是当前Vue实例对象
+                show:function(ev,val){
+                    console.log('当前事件的事件对象：',ev);
+                    console.log('参数：',val);
+                    //修改数据
+                    this.msg='hello,zhangsan';
+                }
+            }
+        });
+        //console.log(vm);
+    </script>
+</body>
+</html>

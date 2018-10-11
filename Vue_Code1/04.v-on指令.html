@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-on:click 可以简写为 @click -->
+        <input type="text" @keyup.up="fn">
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        //配置按键码修饰符
+        Vue.config.keyCodes = {
+            v: 86,
+            f1: 112,
+            // // camelCase 不可用
+            // mediaPlayPause: 179,
+            // 取而代之的是 kebab-case 且用双引号括起来
+            "media-play-pause": 179,
+            up: [38, 87]
+        }
+
+        new Vue({
+            el:"#app",
+            methods:{
+                fn(ev){   //等效 fn:function(){}
+                    // if(ev.keyCode=='13'){
+                    // }
+                    console.log('输入的按键码:',ev.keyCode);
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

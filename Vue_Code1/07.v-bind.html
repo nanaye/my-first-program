@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            background: red;
+        }
+        .green{
+            background: green;
+        }
+        .yellow{
+            background: yellow;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- v-bind:属性 可以简写  :属性
+
+                key="" 配合v-for使用，用于给所遍历的元素添加唯一的标识号，便于Vue内部追踪该元素
+             -->
+            <li v-bind:class="{red:index%3==0,green:index%3==1,yellow:index%3==2}"
+                v-for="(item, index) in arr" 
+                :key="index">
+                {{item}}
+            </li>
+
+            
+        </ul>
+    
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        
+        new Vue({
+            el:"#app",
+            data:{
+                arr:['11111',22222,3333,88888,55555,6666,7777,88888]
+            }
+        })
+
+    </script>
+</body>
+</html>

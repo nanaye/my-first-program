@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            background: rgb(95, 68, 68);
+        }
+        .green{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        用Vue做一个表格，显示
+            姓名   年龄     性别    操作
+            张三   20       男      <a>删除</a>
+
+        数据自己填写
+        表格样式具有条纹效果
+     -->
+     <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="(d, i) in persons" :key="i" :class="{red:i%2==0,green:i%2==1}">
+                    <td v-for="val in d">{{val}}</td>
+                    <!-- 在该行添加删除按钮 -->
+                   <td> <a href="#" @click.prevent="remove(i)">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+     </div>
+
+     <script src="./vue.js"></script>
+     <script>
+         new Vue({
+             el:"#app",
+             data:{
+                 persons:[//存放所有人
+                  //每一个元素就是一个人
+                     {
+                         name:"张三",
+                         age:20,
+                         sex:"男"
+                     },
+                     {
+                         name:"李四",
+                         age:22,
+                         sex:"女"
+                     },
+                     {
+                         name:"王二麻子",
+                         age:29,
+                         sex:"男"
+                     }
+                    
+                 ]
+             },
+             methods:{
+                remove(i){
+                    this.persons.splice(i,1);    //数组
+                }
+             }
+         });     
+
+         /**
+          * 总结：
+                1.Vue实例的创建，内部属性el,data,methods的含义
+
+                2.四个指令：
+                    v-on:事件类型.stop.prevent.KeyCode="函数名或函数调用"     绑定事件
+                    v-for="d in 数组/对象/数字/字符串"  放在哪个元素，哪个元素会被重复
+                    v-bind:属性="值结果为字符串"
+                        特殊：v-bind:class="值结果可以是字符串、对象、数组" / v-bind:style="字符串、对象"
+
+                    v-model="变量" 将表单元素的输入值绑定变量
+          */
+     </script>
+     
+
+</body>
+</html>

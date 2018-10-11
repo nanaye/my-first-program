@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- v-for指令：遍历数组、对象、数字、字符串
+                遍历数组：  v-for="(数组元素,数组下标) in/of 数组" 根据所遍历的数组重复所在的元素
+            -->
+            <li v-for="(d,i) in arr">{{i}}/{{d}}
+                <button @click="remove(i)">删除</button>
+            </li>
+        </ul>
+        <hr/>
+
+          <!-- v-for指令：遍历数组、对象、数字、字符串
+            遍历对象：  v-for="(对象的属性值,对象的属性名,属性所在的下标) in/of 对象" 根据所遍历的对象键值对重复所在的元素
+        -->
+
+        <p>
+            <span v-for="(val,k,i) in person">{{i}}/{{k}}:{{val}}<br/></span>
+        </p>
+        <hr/>
+        <!-- 
+            遍历正整数数字，所遍历的到的是从1开始的递增的数字
+         -->
+        <ul>
+            <li v-for="d in 20">{{d}}</li>
+        </ul>
+        <hr/>
+        <!-- 
+            遍历字符串，将字符串的一个个字符遍历出来
+         -->
+        <ul>
+            <li v-for="d in msg">{{d}}</li>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{//定义数据,类型string,number,boolean,null,array,object
+                arr:['11111','2222','3333','4444','5555'],
+                person:{
+                    name:'张三',
+                    age:20,
+                    sex:'男'
+                },
+                msg:'hello,vue.js'
+            },
+            methods:{
+                remove(index){
+                    //修改数组
+                    this.arr.splice(index,1);
+                }
+            }
+        })
+     
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 视图View上所取的所有变量或函数 都是 从掌管该View的Vue实例上取 -->
+
+        <!--指令：用于帮助用户进行DOM操作的内部方法，指令以元素的自定义属性方式来调用 
+            v-model 指令：将指定的变量和当前表单元素的输入值value进行绑定，
+                         即指定的变量是什么则表单元素的输入值即是什么，表单元素的value是什么则变量就会被赋值什么
+         -->
+        <input type="text"  v-model="msg">
+        <p>{{msg}}</p>
+        <h1>Tile:{{msg}}</h1>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        //Vue是MVVM框架    M-->Model 即数据层    V-->View 视图层   VM-->ViewModel 视图模型层
+       var vm= new Vue({
+            el:"#app",
+            data:{  //定义数据,data上的所有属性都会被当前Vue实例代理
+                msg:'Hello,Vue.js!',
+                person:{},
+                arr:[]
+            }
+        });
+
+        setTimeout(()=>{
+            //数据修改，即会导致视图更新
+            vm.msg="张三,你好"
+        },1000);
+
+      
+        // function Vue(obj){
+        //     //Vue内部，定义实例上的内部变量时都会在变量名前添加$，以和用于自定义的变量区别
+        //     this.$data=obj.data;
+        //     this.msg=obj.data.msg;
+
+        //     this.$el
+        // }
+    </script>
+</body>
+</html>
